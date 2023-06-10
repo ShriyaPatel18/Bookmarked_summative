@@ -4,6 +4,12 @@
  */
 package my.summative_project;
 
+import java.io.IOException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 /**
  *
  * @author Richelle
@@ -31,7 +37,7 @@ public class RecsPage extends javax.swing.JFrame {
         recsMainPanel = new javax.swing.JPanel();
         mysteryButton1 = new javax.swing.JButton();
         fantasyButton1 = new javax.swing.JButton();
-        comicsButton1 = new javax.swing.JButton();
+        sciFiButton1 = new javax.swing.JButton();
         nonFictionButton1 = new javax.swing.JButton();
         horrorButton1 = new javax.swing.JButton();
         romanceButton1 = new javax.swing.JButton();
@@ -76,32 +82,62 @@ public class RecsPage extends javax.swing.JFrame {
         mysteryButton1.setBackground(new java.awt.Color(183, 227, 200));
         mysteryButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         mysteryButton1.setText("Mystery");
+        mysteryButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mysteryButton1ActionPerformed(evt);
+            }
+        });
 
         fantasyButton1.setBackground(new java.awt.Color(217, 234, 211));
         fantasyButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         fantasyButton1.setText("Fantasy");
+        fantasyButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fantasyButton1ActionPerformed(evt);
+            }
+        });
 
-        comicsButton1.setBackground(new java.awt.Color(183, 227, 200));
-        comicsButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        comicsButton1.setText("Comics");
+        sciFiButton1.setBackground(new java.awt.Color(183, 227, 200));
+        sciFiButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        sciFiButton1.setText("Sci-Fi");
+        sciFiButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sciFiButton1ActionPerformed(evt);
+            }
+        });
 
         nonFictionButton1.setBackground(new java.awt.Color(217, 234, 211));
         nonFictionButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         nonFictionButton1.setText("Non-fiction");
+        nonFictionButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nonFictionButton1ActionPerformed(evt);
+            }
+        });
 
         horrorButton1.setBackground(new java.awt.Color(183, 227, 200));
         horrorButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         horrorButton1.setText("Horror");
+        horrorButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horrorButton1ActionPerformed(evt);
+            }
+        });
 
         romanceButton1.setBackground(new java.awt.Color(217, 234, 211));
         romanceButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         romanceButton1.setText("Romance");
+        romanceButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                romanceButton1ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setBackground(new java.awt.Color(249, 240, 230));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("book \nbook");
         jScrollPane2.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout recsMainPanelLayout = new javax.swing.GroupLayout(recsMainPanel);
@@ -115,17 +151,17 @@ public class RecsPage extends javax.swing.JFrame {
                     .addComponent(horrorButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mysteryButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fantasyButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comicsButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sciFiButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nonFictionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
         );
         recsMainPanelLayout.setVerticalGroup(
             recsMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recsMainPanelLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
-                .addGroup(recsMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(recsMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(recsMainPanelLayout.createSequentialGroup()
                         .addComponent(horrorButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,10 +172,10 @@ public class RecsPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(fantasyButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(comicsButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sciFiButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(nonFictionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,9 +204,59 @@ public class RecsPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_backToMainMenuPageActionPerformed
 
+    private void mysteryButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mysteryButton1ActionPerformed
+        getRec("https://www.goodreads.com/shelf/show/mystery-thrillers");
+    }//GEN-LAST:event_mysteryButton1ActionPerformed
+
+    private void romanceButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_romanceButton1ActionPerformed
+        getRec("https://www.goodreads.com/shelf/show/must-read-romance");
+    }//GEN-LAST:event_romanceButton1ActionPerformed
+
+    private void fantasyButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fantasyButton1ActionPerformed
+        getRec("https://www.goodreads.com/shelf/show/recommended-fantasy-books");
+    }//GEN-LAST:event_fantasyButton1ActionPerformed
+
+    private void horrorButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horrorButton1ActionPerformed
+        getRec("https://www.goodreads.com/shelf/show/horror");
+    }//GEN-LAST:event_horrorButton1ActionPerformed
+
+    private void nonFictionButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nonFictionButton1ActionPerformed
+        getRec("https://www.goodreads.com/shelf/show/best-nonfiction");
+    }//GEN-LAST:event_nonFictionButton1ActionPerformed
+
+    private void sciFiButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sciFiButton1ActionPerformed
+        getRec("https://www.goodreads.com/shelf/show/science-fiction");
+    }//GEN-LAST:event_sciFiButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+    public void getRec(String link){
+        //clear text area
+        jTextArea1.setText("");
+        
+        String url = link;
+        
+        try{
+            Document doc = Jsoup.connect(url).userAgent("Me").get();            
+            Elements temp = doc.select(".bookTitle");
+                        
+            int n=0;
+            for(Element list:temp){
+                if (n<5){
+                    jTextArea1.append("\n"+(list.getElementsByTag("a").first().text())+"\n");
+                    n++;
+                }
+                else
+                    break;
+            }
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -201,11 +287,12 @@ public class RecsPage extends javax.swing.JFrame {
                 new RecsPage().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backToMainMenuPage;
-    private javax.swing.JButton comicsButton1;
     private javax.swing.JButton fantasyButton1;
     private javax.swing.JPanel greenRecsPane;
     private javax.swing.JButton horrorButton1;
@@ -215,5 +302,6 @@ public class RecsPage extends javax.swing.JFrame {
     private javax.swing.JButton nonFictionButton1;
     private javax.swing.JPanel recsMainPanel;
     private javax.swing.JButton romanceButton1;
+    private javax.swing.JButton sciFiButton1;
     // End of variables declaration//GEN-END:variables
 }
