@@ -9,6 +9,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import java.util.Random;
 
 /**
  *
@@ -213,7 +214,7 @@ public class RecsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_romanceButton1ActionPerformed
 
     private void fantasyButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fantasyButton1ActionPerformed
-        getRec("https://www.goodreads.com/shelf/show/recommended-fantasy-books");
+        getRec("https://www.goodreads.com/shelf/show/fantasy");
     }//GEN-LAST:event_fantasyButton1ActionPerformed
 
     private void horrorButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horrorButton1ActionPerformed
@@ -234,23 +235,43 @@ public class RecsPage extends javax.swing.JFrame {
     
     public void getRec(String link){
         //clear text area
+        Random rand = new Random();
         jTextArea1.setText("");
+                      
+        //generate 5 unique, but random numbers
+        int index[] = new int[5]; 
+            int n = 0;
+            boolean found;
+
+            while(n<5){
+                found = false;
+                int current = rand.nextInt(50);
+
+                //linear search to check if random index is not unique
+                for(int value:index){
+                    if (value==current)
+                        found = true;
+                }
+                //add random value to the array
+                if (!found){
+                    index[n] = current;
+                    n++;
+                }
+            }
         
         String url = link;
         
         try{
+            //connect to website and get all book titles
             Document doc = Jsoup.connect(url).userAgent("Me").get();            
             Elements temp = doc.select(".bookTitle");
-                        
-            int n=0;
-            for(Element list:temp){
-                if (n<5){
-                    jTextArea1.append("\n"+(list.getElementsByTag("a").first().text())+"\n");
-                    n++;
-                }
-                else
-                    break;
+            
+            //display book titles
+            for(int val:index){                            
+                jTextArea1.append("\n"+(temp.get(val).getElementsByTag("a").first().text())+"\n");            
             }
+            
+            
         }
         catch(IOException e){
             e.printStackTrace();
