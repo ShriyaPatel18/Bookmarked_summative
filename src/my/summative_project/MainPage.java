@@ -35,8 +35,10 @@ public class MainPage extends javax.swing.JFrame {
         favouritesButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(576, 416));
 
         jPanel1.setBackground(new java.awt.Color(249, 240, 230));
+        jPanel1.setMinimumSize(new java.awt.Dimension(576, 416));
 
         exitButton.setBackground(new java.awt.Color(234, 153, 153));
         exitButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
