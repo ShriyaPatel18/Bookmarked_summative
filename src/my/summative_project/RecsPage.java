@@ -43,7 +43,7 @@ public class RecsPage extends javax.swing.JFrame {
         horrorButton1 = new javax.swing.JButton();
         romanceButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        recsTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,12 +134,12 @@ public class RecsPage extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setBackground(new java.awt.Color(249, 240, 230));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        recsTextArea.setBackground(new java.awt.Color(249, 240, 230));
+        recsTextArea.setColumns(20);
+        recsTextArea.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        recsTextArea.setLineWrap(true);
+        recsTextArea.setRows(5);
+        jScrollPane2.setViewportView(recsTextArea);
 
         javax.swing.GroupLayout recsMainPanelLayout = new javax.swing.GroupLayout(recsMainPanel);
         recsMainPanel.setLayout(recsMainPanelLayout);
@@ -236,7 +236,7 @@ public class RecsPage extends javax.swing.JFrame {
     public void getRec(String link){
         //clear text area
         Random rand = new Random();
-        jTextArea1.setText("");
+        recsTextArea.setText("");
                       
         //generate 5 unique, but random numbers
         int index[] = new int[5]; 
@@ -268,7 +268,7 @@ public class RecsPage extends javax.swing.JFrame {
             
             //display book titles
             for(int val:index){                            
-                jTextArea1.append("\n"+(temp.get(val).getElementsByTag("a").first().text())+"\n");            
+                recsTextArea.append("\n"+(temp.get(val).getElementsByTag("a").first().text())+"\n");            
             }
             
             
@@ -318,10 +318,10 @@ public class RecsPage extends javax.swing.JFrame {
     private javax.swing.JPanel greenRecsPane;
     private javax.swing.JButton horrorButton1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton mysteryButton1;
     private javax.swing.JButton nonFictionButton1;
     private javax.swing.JPanel recsMainPanel;
+    private javax.swing.JTextArea recsTextArea;
     private javax.swing.JButton romanceButton1;
     private javax.swing.JButton sciFiButton1;
     // End of variables declaration//GEN-END:variables

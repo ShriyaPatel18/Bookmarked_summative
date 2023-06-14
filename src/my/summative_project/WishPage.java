@@ -4,17 +4,50 @@
  */
 package my.summative_project;
 
+import java.io.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Richelle
  */
 public class WishPage extends javax.swing.JFrame {
 
+    String dir = System.getProperty("user.dir");
+    String filesName = dir + "\\src\\my\\summative_project\\WishBooks.txt";
+    ArrayList<String> booksList = new ArrayList<>();
+    File booksFile = new File(filesName);
+    boolean wishFound = false;
+    String temporaryString = "";
+    String longString = "";
+    String wishBook = "";
+    
     /**
      * Creates new form WishPage
      */
     public WishPage() {
         initComponents();
+         
+        //read text from file
+        try(Scanner readFile = new Scanner (booksFile))
+        {
+            while (readFile.hasNext())
+            {
+                //update book into temporary String and update accumulated String before adding to list
+                temporaryString = readFile.nextLine();
+                longString = longString + temporaryString + "\n";
+                booksList.add(temporaryString); 
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        
+        //set read text into text pane
+        wishTextPane.setText(longString);
     }
 
     /**
@@ -26,21 +59,21 @@ public class WishPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        favSidePanel = new javax.swing.JPanel();
+        wishSidePanel = new javax.swing.JPanel();
         returnBack = new javax.swing.JButton();
-        favPanel = new javax.swing.JPanel();
-        favTextField = new javax.swing.JTextField();
-        favSearch = new javax.swing.JButton();
-        favMessageLabel = new javax.swing.JLabel();
+        wishPanel = new javax.swing.JPanel();
+        wishTextField = new javax.swing.JTextField();
+        wishSearch = new javax.swing.JButton();
+        wishMessageLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        favTextPane = new javax.swing.JTextPane();
-        favRemoveButton = new javax.swing.JButton();
-        favSave = new javax.swing.JButton();
-        favAddButton = new javax.swing.JButton();
+        wishTextPane = new javax.swing.JTextPane();
+        wishRemoveButton = new javax.swing.JButton();
+        wishSave = new javax.swing.JButton();
+        wishAddButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        favSidePanel.setBackground(new java.awt.Color(237, 225, 255));
+        wishSidePanel.setBackground(new java.awt.Color(237, 225, 255));
 
         returnBack.setBackground(new java.awt.Color(234, 153, 153));
         returnBack.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -52,116 +85,116 @@ public class WishPage extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout favSidePanelLayout = new javax.swing.GroupLayout(favSidePanel);
-        favSidePanel.setLayout(favSidePanelLayout);
-        favSidePanelLayout.setHorizontalGroup(
-            favSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, favSidePanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout wishSidePanelLayout = new javax.swing.GroupLayout(wishSidePanel);
+        wishSidePanel.setLayout(wishSidePanelLayout);
+        wishSidePanelLayout.setHorizontalGroup(
+            wishSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wishSidePanelLayout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(returnBack)
                 .addGap(20, 20, 20))
         );
-        favSidePanelLayout.setVerticalGroup(
-            favSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, favSidePanelLayout.createSequentialGroup()
+        wishSidePanelLayout.setVerticalGroup(
+            wishSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wishSidePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(returnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        favPanel.setBackground(new java.awt.Color(249, 240, 230));
-        favPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Wish List", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
+        wishPanel.setBackground(new java.awt.Color(249, 240, 230));
+        wishPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Wish List", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
 
-        favTextField.addActionListener(new java.awt.event.ActionListener() {
+        wishTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                favTextFieldActionPerformed(evt);
+                wishTextFieldActionPerformed(evt);
             }
         });
 
-        favSearch.setBackground(new java.awt.Color(237, 225, 255));
-        favSearch.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        favSearch.setText("Search Book");
-        favSearch.addActionListener(new java.awt.event.ActionListener() {
+        wishSearch.setBackground(new java.awt.Color(237, 225, 255));
+        wishSearch.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        wishSearch.setText("Search Book");
+        wishSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                favSearchActionPerformed(evt);
+                wishSearchActionPerformed(evt);
             }
         });
 
-        favMessageLabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        wishMessageLabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        favTextPane.setBackground(new java.awt.Color(249, 240, 230));
-        favTextPane.setOpaque(false);
-        jScrollPane1.setViewportView(favTextPane);
+        wishTextPane.setBackground(new java.awt.Color(249, 240, 230));
+        wishTextPane.setOpaque(false);
+        jScrollPane1.setViewportView(wishTextPane);
 
-        favRemoveButton.setBackground(new java.awt.Color(237, 225, 255));
-        favRemoveButton.setText("Remove Book");
-        favRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+        wishRemoveButton.setBackground(new java.awt.Color(237, 225, 255));
+        wishRemoveButton.setText("Remove Book");
+        wishRemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                favRemoveButtonActionPerformed(evt);
+                wishRemoveButtonActionPerformed(evt);
             }
         });
 
-        favSave.setBackground(new java.awt.Color(237, 225, 255));
-        favSave.setText("Save");
-        favSave.addActionListener(new java.awt.event.ActionListener() {
+        wishSave.setBackground(new java.awt.Color(237, 225, 255));
+        wishSave.setText("Save");
+        wishSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                favSaveActionPerformed(evt);
+                wishSaveActionPerformed(evt);
             }
         });
 
-        favAddButton.setBackground(new java.awt.Color(237, 225, 255));
-        favAddButton.setText("Add Book");
-        favAddButton.addActionListener(new java.awt.event.ActionListener() {
+        wishAddButton.setBackground(new java.awt.Color(237, 225, 255));
+        wishAddButton.setText("Add Book");
+        wishAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                favAddButtonActionPerformed(evt);
+                wishAddButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout favPanelLayout = new javax.swing.GroupLayout(favPanel);
-        favPanel.setLayout(favPanelLayout);
-        favPanelLayout.setHorizontalGroup(
-            favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(favPanelLayout.createSequentialGroup()
-                .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(favPanelLayout.createSequentialGroup()
-                        .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(favPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout wishPanelLayout = new javax.swing.GroupLayout(wishPanel);
+        wishPanel.setLayout(wishPanelLayout);
+        wishPanelLayout.setHorizontalGroup(
+            wishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(wishPanelLayout.createSequentialGroup()
+                .addGroup(wishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(wishPanelLayout.createSequentialGroup()
+                        .addGroup(wishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(wishPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(favMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(favPanelLayout.createSequentialGroup()
+                                .addComponent(wishMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(wishPanelLayout.createSequentialGroup()
                                 .addGap(79, 79, 79)
-                                .addComponent(favAddButton)
+                                .addComponent(wishAddButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(favSave)
+                                .addComponent(wishSave)
                                 .addGap(18, 18, 18)
-                                .addComponent(favRemoveButton)))
+                                .addComponent(wishRemoveButton)))
                         .addGap(0, 53, Short.MAX_VALUE))
-                    .addGroup(favPanelLayout.createSequentialGroup()
+                    .addGroup(wishPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(favPanelLayout.createSequentialGroup()
-                                .addComponent(favTextField)
+                        .addGroup(wishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(wishPanelLayout.createSequentialGroup()
+                                .addComponent(wishTextField)
                                 .addGap(18, 18, 18)
-                                .addComponent(favSearch))
+                                .addComponent(wishSearch))
                             .addComponent(jScrollPane1))))
                 .addContainerGap())
         );
-        favPanelLayout.setVerticalGroup(
-            favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(favPanelLayout.createSequentialGroup()
+        wishPanelLayout.setVerticalGroup(
+            wishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(wishPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(favTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(favSearch))
+                .addGroup(wishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(wishTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wishSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(favMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(wishMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(favRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(favSave, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(favAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(wishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(wishRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wishSave, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wishAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -170,15 +203,15 @@ public class WishPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(favPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(wishPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(favSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(wishSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(favPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(favSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(wishPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(wishSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -191,58 +224,58 @@ public class WishPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_returnBackActionPerformed
 
-    private void favTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favTextFieldActionPerformed
+    private void wishTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wishTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_favTextFieldActionPerformed
+    }//GEN-LAST:event_wishTextFieldActionPerformed
 
-    private void favSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favSearchActionPerformed
+    private void wishSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wishSearchActionPerformed
         // TODO add your handling code here:
 
-        favBook = favTextField.getText();
+        wishBook = wishTextField.getText();
 
-        //to see if favBook is already in the book list
-        favFound = bookList.contains(favBook);
+        //to see if wishBook is already in the book list
+        wishFound = booksList.contains(wishBook);
 
         //logic to display label meessage
-        if(favFound == false)
+        if(wishFound == false)
         {
-            favMessageLabel.setText("The book " + favBook + " is not in your Favourites List.");
+            wishMessageLabel.setText("The book " + wishBook + " is not in your Wish List.");
         }
         else
         {
-            favMessageLabel.setText("The book " + favBook + " is in your Favourites List!");
+            wishMessageLabel.setText("The book " + wishBook + " is in your Wish List!");
         }
-    }//GEN-LAST:event_favSearchActionPerformed
+    }//GEN-LAST:event_wishSearchActionPerformed
 
-    private void favRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favRemoveButtonActionPerformed
+    private void wishRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wishRemoveButtonActionPerformed
 
-        favBook = favTextField.getText();
+        wishBook = wishTextField.getText();
 
         //add book to the list
-        bookList.remove(favBook);
+        booksList.remove(wishBook);
 
         //reset longString variable
         longString = "";
-        for(int i = 0; i < bookList.size(); i++)
+        for(int i = 0; i < booksList.size(); i++)
         {
             //update longString variable
-            longString = longString + bookList.get(i) + "\n";
+            longString = longString + booksList.get(i) + "\n";
         }
 
         //set new removed text to text pane
-        favTextPane.setText(longString);
-    }//GEN-LAST:event_favRemoveButtonActionPerformed
+        wishTextPane.setText(longString);
+    }//GEN-LAST:event_wishRemoveButtonActionPerformed
 
-    private void favSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favSaveActionPerformed
+    private void wishSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wishSaveActionPerformed
 
         //save results into file
         try
         {
-            FileWriter writeFile = new FileWriter(dir + "\\src\\my\\summative_project\\favBooks.txt");
+            FileWriter writeFile = new FileWriter(dir + "\\src\\my\\summative_project\\WishBooks.txt");
             BufferedWriter buffWrite = new BufferedWriter(writeFile);
-            for(int i = 0; i < bookList.size(); i++)
+            for(int i = 0; i < booksList.size(); i++)
             {
-                buffWrite.write(bookList.get(i));
+                buffWrite.write(booksList.get(i));
                 buffWrite.newLine();
             }
             buffWrite.close();
@@ -251,28 +284,28 @@ public class WishPage extends javax.swing.JFrame {
             System.out.println("File not found");
         }
         catch (IOException ex) {
-            Logger.getLogger(FavouritesPage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WishPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_favSaveActionPerformed
+    }//GEN-LAST:event_wishSaveActionPerformed
 
-    private void favAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favAddButtonActionPerformed
+    private void wishAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wishAddButtonActionPerformed
 
-        favBook = favTextField.getText();
+        wishBook = wishTextField.getText();
 
         //add book to the list
-        bookList.add(favBook);
+        booksList.add(wishBook);
 
         //reset longString variable
         longString = "";
-        for(int i = 0; i < bookList.size(); i++)
+        for(int i = 0; i < booksList.size(); i++)
         {
             //update longString variable
-            longString = longString + bookList.get(i) + "\n";
+            longString = longString + booksList.get(i) + "\n";
         }
 
         //set new added text to text pane
-        favTextPane.setText(longString);
-    }//GEN-LAST:event_favAddButtonActionPerformed
+        wishTextPane.setText(longString);
+    }//GEN-LAST:event_wishAddButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,16 +343,16 @@ public class WishPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton favAddButton;
-    private javax.swing.JLabel favMessageLabel;
-    private javax.swing.JPanel favPanel;
-    private javax.swing.JButton favRemoveButton;
-    private javax.swing.JButton favSave;
-    private javax.swing.JButton favSearch;
-    private javax.swing.JPanel favSidePanel;
-    private javax.swing.JTextField favTextField;
-    public javax.swing.JTextPane favTextPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton returnBack;
+    private javax.swing.JButton wishAddButton;
+    public javax.swing.JLabel wishMessageLabel;
+    private javax.swing.JPanel wishPanel;
+    private javax.swing.JButton wishRemoveButton;
+    private javax.swing.JButton wishSave;
+    private javax.swing.JButton wishSearch;
+    private javax.swing.JPanel wishSidePanel;
+    private javax.swing.JTextField wishTextField;
+    public javax.swing.JTextPane wishTextPane;
     // End of variables declaration//GEN-END:variables
 }

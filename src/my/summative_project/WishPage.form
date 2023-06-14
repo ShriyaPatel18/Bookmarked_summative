@@ -24,22 +24,22 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="favPanel" min="-2" max="-2" attributes="0"/>
+              <Component id="wishPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="favSidePanel" min="-2" max="-2" attributes="0"/>
+              <Component id="wishSidePanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="favPanel" alignment="0" max="32767" attributes="0"/>
-          <Component id="favSidePanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="wishPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="wishSidePanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="favSidePanel">
+    <Container class="javax.swing.JPanel" name="wishSidePanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="e1" red="ed" type="rgb"/>
@@ -84,7 +84,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="favPanel">
+    <Container class="javax.swing.JPanel" name="wishPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="e6" green="f0" red="f9" type="rgb"/>
@@ -107,15 +107,15 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="favMessageLabel" min="-2" pref="379" max="-2" attributes="0"/>
+                                  <Component id="wishMessageLabel" min="-2" pref="379" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                                  <Component id="favAddButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="wishAddButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="favSave" min="-2" max="-2" attributes="0"/>
+                                  <Component id="wishSave" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="favRemoveButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="wishRemoveButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
@@ -124,9 +124,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="favTextField" max="32767" attributes="0"/>
+                                  <Component id="wishTextField" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="favSearch" min="-2" max="-2" attributes="0"/>
+                                  <Component id="wishSearch" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -141,18 +141,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="favTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="favSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="wishTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="wishSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="favMessageLabel" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="wishMessageLabel" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="244" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="favRemoveButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="favSave" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="favAddButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="wishRemoveButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="wishSave" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="wishAddButton" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -160,12 +160,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="favTextField">
+        <Component class="javax.swing.JTextField" name="wishTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favTextFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wishTextFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="favSearch">
+        <Component class="javax.swing.JButton" name="wishSearch">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="e1" red="ed" type="rgb"/>
@@ -176,15 +176,18 @@
             <Property name="text" type="java.lang.String" value="Search Book"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favSearchActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wishSearchActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="favMessageLabel">
+        <Component class="javax.swing.JLabel" name="wishMessageLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="14" style="0"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -193,7 +196,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextPane" name="favTextPane">
+            <Component class="javax.swing.JTextPane" name="wishTextPane">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e6" green="f0" red="f9" type="rgb"/>
@@ -206,7 +209,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="favRemoveButton">
+        <Component class="javax.swing.JButton" name="wishRemoveButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="e1" red="ed" type="rgb"/>
@@ -214,10 +217,10 @@
             <Property name="text" type="java.lang.String" value="Remove Book"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favRemoveButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wishRemoveButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="favSave">
+        <Component class="javax.swing.JButton" name="wishSave">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="e1" red="ed" type="rgb"/>
@@ -225,10 +228,10 @@
             <Property name="text" type="java.lang.String" value="Save"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favSaveActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wishSaveActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="favAddButton">
+        <Component class="javax.swing.JButton" name="wishAddButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="e1" red="ed" type="rgb"/>
@@ -236,7 +239,7 @@
             <Property name="text" type="java.lang.String" value="Add Book"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favAddButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wishAddButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
