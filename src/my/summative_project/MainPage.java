@@ -32,7 +32,7 @@ public class MainPage extends javax.swing.JFrame {
         recsButton = new javax.swing.JButton();
         calendarButton = new javax.swing.JButton();
         favouritesButton = new javax.swing.JButton();
-        favouritesButton1 = new javax.swing.JButton();
+        WishList = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,12 +80,12 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        favouritesButton1.setBackground(new java.awt.Color(237, 225, 255));
-        favouritesButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        favouritesButton1.setText("Wish List");
-        favouritesButton1.addActionListener(new java.awt.event.ActionListener() {
+        WishList.setBackground(new java.awt.Color(237, 225, 255));
+        WishList.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        WishList.setText("Wish List");
+        WishList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                favouritesButton1ActionPerformed(evt);
+                WishListActionPerformed(evt);
             }
         });
 
@@ -101,7 +101,7 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(favouritesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(recsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(calendarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(favouritesButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(WishList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
@@ -128,7 +128,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(calendarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(favouritesButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(WishList, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(favouritesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -186,9 +186,12 @@ public class MainPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_favouritesButtonActionPerformed
 
-    private void favouritesButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favouritesButton1ActionPerformed
+    private void WishListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WishListActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_favouritesButton1ActionPerformed
+        WishPage wish = new WishPage();
+        wish.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_WishListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,10 +229,10 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton WishList;
     private javax.swing.JButton calendarButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton favouritesButton;
-    private javax.swing.JButton favouritesButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel mainTitle;

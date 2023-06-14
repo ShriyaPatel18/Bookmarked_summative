@@ -63,7 +63,7 @@
                       <Component id="favouritesButton" max="32767" attributes="0"/>
                       <Component id="recsButton" alignment="0" pref="160" max="32767" attributes="0"/>
                       <Component id="calendarButton" alignment="0" max="32767" attributes="0"/>
-                      <Component id="favouritesButton1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="WishList" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -97,7 +97,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="calendarButton" min="-2" pref="57" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="favouritesButton1" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="WishList" min="-2" pref="57" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="favouritesButton" min="-2" pref="57" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -179,7 +179,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favouritesButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="favouritesButton1">
+        <Component class="javax.swing.JButton" name="WishList">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="e1" red="ed" type="rgb"/>
@@ -190,7 +190,7 @@
             <Property name="text" type="java.lang.String" value="Wish List"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="favouritesButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WishListActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
