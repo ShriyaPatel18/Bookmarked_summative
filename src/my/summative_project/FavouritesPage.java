@@ -22,6 +22,7 @@ public class FavouritesPage extends javax.swing.JFrame {
     boolean favFound = false;
     String tempString = "";
     String longString = "";
+    String favBook = "";
     
     /**
     Creates new form FavouritesPage
@@ -30,6 +31,7 @@ public class FavouritesPage extends javax.swing.JFrame {
     public FavouritesPage() {
         initComponents();
         
+        //read text from file
         try(Scanner readFile = new Scanner (bookFile))
         {
             while (readFile.hasNext())
@@ -45,9 +47,8 @@ public class FavouritesPage extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
+        //set read text into text pane
         favTextPane.setText(longString);
-        
-        
     }
 
     /**
@@ -92,8 +93,13 @@ public class FavouritesPage extends javax.swing.JFrame {
             }
         });
 
+        favMessageLabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+
+        favTextPane.setBackground(new java.awt.Color(249, 240, 230));
+        favTextPane.setOpaque(false);
         jScrollPane1.setViewportView(favTextPane);
 
+        favRemoveButton.setBackground(new java.awt.Color(255, 225, 232));
         favRemoveButton.setText("Remove Book");
         favRemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +107,7 @@ public class FavouritesPage extends javax.swing.JFrame {
             }
         });
 
+        favSave.setBackground(new java.awt.Color(255, 225, 232));
         favSave.setText("Save");
         favSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +115,7 @@ public class FavouritesPage extends javax.swing.JFrame {
             }
         });
 
+        favAddButton.setBackground(new java.awt.Color(255, 225, 232));
         favAddButton.setText("Add Book");
         favAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,11 +226,12 @@ public class FavouritesPage extends javax.swing.JFrame {
     private void favSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favSearchActionPerformed
         // TODO add your handling code here:
         
-        String favBook = "";
         favBook = favTextField.getText();
         
+        //to see if favBook is already in the book list
         favFound = bookList.contains(favBook);
         
+        //logic to display label meessage
         if(favFound == false)
         {
             favMessageLabel.setText("The book " + favBook + " is not in your Favourites List.");
@@ -241,8 +250,8 @@ public class FavouritesPage extends javax.swing.JFrame {
     }//GEN-LAST:event_returnBackActionPerformed
 
     private void favSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favSaveActionPerformed
-        // TODO add your handling code here:
-        
+     
+        //save results into file
         try
         {
             FileWriter writeFile = new FileWriter(dir + "\\src\\my\\summative_project\\favBooks.txt");
@@ -263,38 +272,40 @@ public class FavouritesPage extends javax.swing.JFrame {
     }//GEN-LAST:event_favSaveActionPerformed
 
     private void favAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favAddButtonActionPerformed
-        // TODO add your handling code here:
-        
-        String favBook = "";
+  
         favBook = favTextField.getText();
         
+        //add book to the list
         bookList.add(favBook); 
         
+        //reset longString variable
         longString = "";
         for(int i = 0; i < bookList.size(); i++)
         {
-            //update book into temporary String and update accumulated String before adding to list
+            //update longString variable
             longString = longString + bookList.get(i) + "\n";
         }
         
+        //set new added text to text pane
         favTextPane.setText(longString);
     }//GEN-LAST:event_favAddButtonActionPerformed
 
     private void favRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favRemoveButtonActionPerformed
-        // TODO add your handling code here:
-        
-        String favBook = "";
+
         favBook = favTextField.getText();
         
+        //add book to the list
         bookList.remove(favBook);
         
+        //reset longString variable
         longString = "";
         for(int i = 0; i < bookList.size(); i++)
         {
-            //update book into temporary String and update accumulated String before adding to list
+            //update longString variable
             longString = longString + bookList.get(i) + "\n";
         }
         
+        //set new removed text to text pane
         favTextPane.setText(longString);
     }//GEN-LAST:event_favRemoveButtonActionPerformed
 

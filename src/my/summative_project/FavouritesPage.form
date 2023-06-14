@@ -138,6 +138,11 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="favMessageLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="14" style="0"/>
+            </Property>
+          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -147,6 +152,12 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="favTextPane">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e6" green="f0" red="f9" type="rgb"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -155,6 +166,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="favRemoveButton">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e8" green="e1" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Remove Book"/>
           </Properties>
           <Events>
@@ -163,6 +177,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="favSave">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e8" green="e1" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Save"/>
           </Properties>
           <Events>
@@ -171,6 +188,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="favAddButton">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e8" green="e1" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Add Book"/>
           </Properties>
           <Events>
