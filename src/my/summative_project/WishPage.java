@@ -122,6 +122,7 @@ public class WishPage extends javax.swing.JFrame {
 
         wishMessageLabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
+        wishTextPane.setEditable(false);
         wishTextPane.setBackground(new java.awt.Color(249, 240, 230));
         wishTextPane.setOpaque(false);
         jScrollPane1.setViewportView(wishTextPane);

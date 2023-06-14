@@ -134,6 +134,7 @@ public class RecsPage extends javax.swing.JFrame {
             }
         });
 
+        recsTextArea.setEditable(false);
         recsTextArea.setBackground(new java.awt.Color(249, 240, 230));
         recsTextArea.setColumns(20);
         recsTextArea.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N

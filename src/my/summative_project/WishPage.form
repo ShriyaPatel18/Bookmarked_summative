@@ -198,6 +198,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="wishTextPane">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e6" green="f0" red="f9" type="rgb"/>
                 </Property>
