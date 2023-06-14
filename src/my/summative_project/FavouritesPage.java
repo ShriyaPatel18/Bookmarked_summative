@@ -4,17 +4,50 @@
  */
 package my.summative_project;
 
+import java.io.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+        
 /**
  *
  * @author spate8
  */
 public class FavouritesPage extends javax.swing.JFrame {
 
+    String dir = System.getProperty("user.dir");
+    String fileName = dir + "\\src\\my\\summative_project\\favBooks.txt";
+    ArrayList<String> bookList = new ArrayList<>();
+    File bookFile = new File(fileName);
+    boolean favFound = false;
+    String tempString = "";
+    String longString = "";
+    
     /**
-     * Creates new form FavouritesPage
-     */
+    Creates new form FavouritesPage
+    */
+    
     public FavouritesPage() {
         initComponents();
+        
+        try(Scanner readFile = new Scanner (bookFile))
+        {
+            while (readFile.hasNext())
+            {
+                //update book into temporary String and update accumulated String before adding to list
+                tempString = readFile.nextLine();
+                longString = longString + tempString + "\n";
+                bookList.add(tempString); 
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        
+        favTextPane.setText(longString);
+        
+        
     }
 
     /**
@@ -26,68 +59,111 @@ public class FavouritesPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
+        favPanel = new javax.swing.JPanel();
+        favTextField = new javax.swing.JTextField();
+        favSearch = new javax.swing.JButton();
+        favMessageLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        favTextPane = new javax.swing.JTextPane();
+        favRemoveButton = new javax.swing.JButton();
+        favSave = new javax.swing.JButton();
+        favAddButton = new javax.swing.JButton();
+        favSidePanel = new javax.swing.JPanel();
         returnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(576, 416));
 
-        jPanel1.setBackground(new java.awt.Color(249, 240, 230));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Favourites/Wish List", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
+        favPanel.setBackground(new java.awt.Color(249, 240, 230));
+        favPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Favourites/Wish List", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        favTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                favTextFieldActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 225, 232));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jButton1.setText("Search Book");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        favSearch.setBackground(new java.awt.Color(255, 225, 232));
+        favSearch.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        favSearch.setText("Search Book");
+        favSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                favSearchActionPerformed(evt);
             }
         });
 
-        jTextArea1.setBackground(new java.awt.Color(249, 240, 230));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("book \nbook");
-        jScrollPane2.setViewportView(jTextArea1);
+        jScrollPane1.setViewportView(favTextPane);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addGap(0, 23, Short.MAX_VALUE))
+        favRemoveButton.setText("Remove Book");
+        favRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favRemoveButtonActionPerformed(evt);
+            }
+        });
+
+        favSave.setText("Save");
+        favSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favSaveActionPerformed(evt);
+            }
+        });
+
+        favAddButton.setText("Add Book");
+        favAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favAddButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout favPanelLayout = new javax.swing.GroupLayout(favPanel);
+        favPanel.setLayout(favPanelLayout);
+        favPanelLayout.setHorizontalGroup(
+            favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(favPanelLayout.createSequentialGroup()
+                .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(favPanelLayout.createSequentialGroup()
+                        .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(favPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(favMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(favPanelLayout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(favAddButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(favSave)
+                                .addGap(18, 18, 18)
+                                .addComponent(favRemoveButton)))
+                        .addGap(0, 53, Short.MAX_VALUE))
+                    .addGroup(favPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(favPanelLayout.createSequentialGroup()
+                                .addComponent(favTextField)
+                                .addGap(18, 18, 18)
+                                .addComponent(favSearch))
+                            .addComponent(jScrollPane1))))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        favPanelLayout.setVerticalGroup(
+            favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(favPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(favTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(favSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(favMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(favPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(favRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(favSave, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(favAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 225, 232));
+        favSidePanel.setBackground(new java.awt.Color(255, 225, 232));
 
         returnBack.setBackground(new java.awt.Color(234, 153, 153));
         returnBack.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -99,18 +175,18 @@ public class FavouritesPage extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout favSidePanelLayout = new javax.swing.GroupLayout(favSidePanel);
+        favSidePanel.setLayout(favSidePanelLayout);
+        favSidePanelLayout.setHorizontalGroup(
+            favSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, favSidePanelLayout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(returnBack)
                 .addGap(20, 20, 20))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        favSidePanelLayout.setVerticalGroup(
+            favSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, favSidePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(returnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -121,27 +197,41 @@ public class FavouritesPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(favPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(favSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(favPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(favSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void favTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_favTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void favSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        String favBook = "";
+        favBook = favTextField.getText();
+        
+        favFound = bookList.contains(favBook);
+        
+        if(favFound == false)
+        {
+            favMessageLabel.setText("The book " + favBook + " is not in your Favourites List.");
+        }
+        else
+        {
+            favMessageLabel.setText("The book " + favBook + " is in your Favourites List!");
+        }
+    }//GEN-LAST:event_favSearchActionPerformed
 
     private void returnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBackActionPerformed
         // TODO add your handling code here:
@@ -149,6 +239,64 @@ public class FavouritesPage extends javax.swing.JFrame {
         main.setVisible(true);
         dispose();
     }//GEN-LAST:event_returnBackActionPerformed
+
+    private void favSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favSaveActionPerformed
+        // TODO add your handling code here:
+        
+        try
+        {
+            FileWriter writeFile = new FileWriter(dir + "\\src\\my\\summative_project\\favBooks.txt");
+            BufferedWriter buffWrite = new BufferedWriter(writeFile);
+            for(int i = 0; i < bookList.size(); i++)
+            {
+                buffWrite.write(bookList.get(i));
+                buffWrite.newLine();
+            }
+          buffWrite.close();
+        }
+        catch (FileNotFoundException e){
+            System.out.println("File not found");
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(FavouritesPage.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }//GEN-LAST:event_favSaveActionPerformed
+
+    private void favAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favAddButtonActionPerformed
+        // TODO add your handling code here:
+        
+        String favBook = "";
+        favBook = favTextField.getText();
+        
+        bookList.add(favBook); 
+        
+        longString = "";
+        for(int i = 0; i < bookList.size(); i++)
+        {
+            //update book into temporary String and update accumulated String before adding to list
+            longString = longString + bookList.get(i) + "\n";
+        }
+        
+        favTextPane.setText(longString);
+    }//GEN-LAST:event_favAddButtonActionPerformed
+
+    private void favRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favRemoveButtonActionPerformed
+        // TODO add your handling code here:
+        
+        String favBook = "";
+        favBook = favTextField.getText();
+        
+        bookList.remove(favBook);
+        
+        longString = "";
+        for(int i = 0; i < bookList.size(); i++)
+        {
+            //update book into temporary String and update accumulated String before adding to list
+            longString = longString + bookList.get(i) + "\n";
+        }
+        
+        favTextPane.setText(longString);
+    }//GEN-LAST:event_favRemoveButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,12 +334,16 @@ public class FavouritesPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton favAddButton;
+    private javax.swing.JLabel favMessageLabel;
+    private javax.swing.JPanel favPanel;
+    private javax.swing.JButton favRemoveButton;
+    private javax.swing.JButton favSave;
+    private javax.swing.JButton favSearch;
+    private javax.swing.JPanel favSidePanel;
+    private javax.swing.JTextField favTextField;
+    public javax.swing.JTextPane favTextPane;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton returnBack;
     // End of variables declaration//GEN-END:variables
 }
