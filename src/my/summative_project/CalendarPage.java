@@ -63,6 +63,13 @@ public class CalendarPage extends javax.swing.JFrame {
 
         calendarPanel = new javax.swing.JPanel();
         calendarGrid = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         home = new javax.swing.JButton();
 
@@ -74,20 +81,58 @@ public class CalendarPage extends javax.swing.JFrame {
         calendarGrid.setBackground(new java.awt.Color(207, 226, 243));
         calendarGrid.setLayout(new java.awt.GridLayout(6, 7));
 
+        jLabel1.setText("Sun");
+
+        jLabel2.setText("Mon");
+
+        jLabel3.setText("Tue");
+
+        jLabel4.setText("Wed");
+
+        jLabel5.setText("Thu");
+
+        jLabel6.setText("Fri");
+
+        jLabel7.setText("Sat");
+
         javax.swing.GroupLayout calendarPanelLayout = new javax.swing.GroupLayout(calendarPanel);
         calendarPanel.setLayout(calendarPanelLayout);
         calendarPanelLayout.setHorizontalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(calendarPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(calendarGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(calendarPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel3)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel4)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel5)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel6)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel7))
+                    .addComponent(calendarGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         calendarPanelLayout.setVerticalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(calendarPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(calendarGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(calendarGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -188,6 +233,13 @@ public class CalendarPage extends javax.swing.JFrame {
     private javax.swing.JPanel calendarGrid;
     private javax.swing.JPanel calendarPanel;
     private javax.swing.JButton home;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
