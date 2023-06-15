@@ -76,7 +76,7 @@ public class FavouritesPage extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(576, 416));
 
         favPanel.setBackground(new java.awt.Color(249, 240, 230));
-        favPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Favourites/Wish List", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
+        favPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Favourites", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 18))); // NOI18N
 
         favTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +215,8 @@ public class FavouritesPage extends javax.swing.JFrame {
             .addComponent(favPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(favSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        favPanel.getAccessibleContext().setAccessibleName("Favourites");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
