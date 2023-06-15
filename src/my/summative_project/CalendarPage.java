@@ -23,16 +23,23 @@ public class CalendarPage extends javax.swing.JFrame {
         initComponents();
         int day = setDate(2023,6);
         int number = 1;
+        JButton[] array = new JButton[30];
+        JButton button;
         for (int x=1; x<=42; x++){
            if (x<day || number>30){
              calendarGrid.add(new JLabel(" "));
            }
            
            else{ 
-           
-            calendarGrid.add(new JButton(Integer.toString(number)));
+            button = new JButton(Integer.toString(number));
+            
+            calendarGrid.add(button);
+            array[number-1]=button;
             number++;
            }
+        }
+        for(JButton potato : array){
+            System.out.println(potato.getText());
         }
     }
      public static int setDate(int year, int month){
