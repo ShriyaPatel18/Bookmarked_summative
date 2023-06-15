@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package my.summative_project;
+import java.util.Calendar;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.awt.event.*;
 
 /**
  *
@@ -18,9 +21,28 @@ public class CalendarPage extends javax.swing.JFrame {
     
     public CalendarPage() {
         initComponents();
+        int day = setDate(2023,6);
+        int number = 1;
         for (int x=1; x<=42; x++){
-            calendarGrid.add(new JLabel(Integer.toString(x)));
+           if (x<day || number>30){
+             calendarGrid.add(new JLabel(" "));
+           }
+           
+           else{ 
+           
+            calendarGrid.add(new JButton(Integer.toString(number)));
+            number++;
+           }
         }
+    }
+     public static int setDate(int year, int month){
+       
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month - 1);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        //
+       return calendar.get(Calendar.DAY_OF_WEEK);
     }
 
     /**
