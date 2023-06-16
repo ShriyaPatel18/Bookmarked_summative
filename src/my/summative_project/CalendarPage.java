@@ -11,6 +11,7 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.Color;
 /**
  *
  * @author spate8
@@ -35,7 +36,7 @@ public class CalendarPage extends javax.swing.JFrame {
            
            else{ 
             button = new JButton(Integer.toString(number));
-            
+            button.addActionListener(e -> System.out.println("f"));
             calendarGrid.add(button);
             array[number-1]=button;
             number++;
@@ -44,7 +45,11 @@ public class CalendarPage extends javax.swing.JFrame {
         for(JButton potato : array){
             System.out.println(potato.getText());
         }
+        
     }
+    
+    
+    
     public int setDate(int year, int month){
        
         Calendar calendar = Calendar.getInstance();
