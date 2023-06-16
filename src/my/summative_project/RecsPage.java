@@ -276,7 +276,7 @@ public class RecsPage extends javax.swing.JFrame {
                 //remove text that follows the book title
                 int splitIndex = title.indexOf("(");
                 title = title.substring(0,splitIndex);
-                recsTextArea.append("\n"+title+"\n");            
+                recsTextArea.append("\n"+"- "+title+"\n");            
             }
             
             
