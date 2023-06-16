@@ -17,16 +17,16 @@ public class CalendarPage extends javax.swing.JFrame {
     /**
      * Creates new form CalendarPage
      */
-    
+    int numOfDays;
     
     public CalendarPage() {
         initComponents();
+        int number = 1;        
         int day = setDate(2023,6);
-        int number = 1;
         JButton[] array = new JButton[30];
         JButton button;
         for (int x=1; x<=42; x++){
-           if (x<day || number>30){
+           if (x<day || number>numOfDays){
              calendarGrid.add(new JLabel(" "));
            }
            
@@ -42,12 +42,13 @@ public class CalendarPage extends javax.swing.JFrame {
             System.out.println(potato.getText());
         }
     }
-     public static int setDate(int year, int month){
+    public int setDate(int year, int month){
        
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month - 1);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
+        numOfDays = calendar.getActualMaximum(Calendar.DATE);
         //
        return calendar.get(Calendar.DAY_OF_WEEK);
     }
@@ -100,24 +101,25 @@ public class CalendarPage extends javax.swing.JFrame {
         calendarPanelLayout.setHorizontalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(calendarPanelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(calendarPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel3)
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel4)
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel5)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel6)
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel7))
-                    .addComponent(calendarGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel3)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel4)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel5)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel6)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, calendarPanelLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(calendarGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         calendarPanelLayout.setVerticalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,10 +154,10 @@ public class CalendarPage extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(home)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
