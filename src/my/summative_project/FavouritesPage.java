@@ -100,6 +100,7 @@ public class FavouritesPage extends javax.swing.JFrame {
         jScrollPane1.setViewportView(favTextPane);
 
         favRemoveButton.setBackground(new java.awt.Color(255, 225, 232));
+        favRemoveButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         favRemoveButton.setText("Remove Book");
         favRemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +109,7 @@ public class FavouritesPage extends javax.swing.JFrame {
         });
 
         favSave.setBackground(new java.awt.Color(255, 225, 232));
+        favSave.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         favSave.setText("Save");
         favSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +118,7 @@ public class FavouritesPage extends javax.swing.JFrame {
         });
 
         favAddButton.setBackground(new java.awt.Color(255, 225, 232));
+        favAddButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         favAddButton.setText("Add Book");
         favAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

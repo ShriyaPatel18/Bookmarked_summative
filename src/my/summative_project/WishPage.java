@@ -128,6 +128,7 @@ public class WishPage extends javax.swing.JFrame {
         jScrollPane1.setViewportView(wishTextPane);
 
         wishRemoveButton.setBackground(new java.awt.Color(237, 225, 255));
+        wishRemoveButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         wishRemoveButton.setText("Remove Book");
         wishRemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +137,7 @@ public class WishPage extends javax.swing.JFrame {
         });
 
         wishSave.setBackground(new java.awt.Color(237, 225, 255));
+        wishSave.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         wishSave.setText("Save");
         wishSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +146,7 @@ public class WishPage extends javax.swing.JFrame {
         });
 
         wishAddButton.setBackground(new java.awt.Color(237, 225, 255));
+        wishAddButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         wishAddButton.setText("Add Book");
         wishAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
