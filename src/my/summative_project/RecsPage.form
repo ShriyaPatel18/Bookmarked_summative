@@ -105,18 +105,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="romanceButton1" min="-2" pref="130" max="-2" attributes="0"/>
                       <Component id="horrorButton1" min="-2" pref="130" max="-2" attributes="0"/>
                       <Component id="mysteryButton1" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                       <Component id="fantasyButton1" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                       <Component id="sciFiButton1" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="nonFictionButton1" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="nonFictionButton1" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" pref="252" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" pref="268" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -134,9 +134,9 @@
                           <Component id="mysteryButton1" min="-2" pref="38" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="fantasyButton1" min="-2" pref="38" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="sciFiButton1" min="-2" pref="38" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="sciFiButton1" min="-2" pref="38" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="nonFictionButton1" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                   </Group>

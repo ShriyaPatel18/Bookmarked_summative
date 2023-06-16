@@ -147,7 +147,7 @@ public class RecsPage extends javax.swing.JFrame {
         recsMainPanelLayout.setHorizontalGroup(
             recsMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(recsMainPanelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(recsMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(romanceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(horrorButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,9 +155,9 @@ public class RecsPage extends javax.swing.JFrame {
                     .addComponent(fantasyButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sciFiButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nonFictionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
         );
         recsMainPanelLayout.setVerticalGroup(
             recsMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +200,6 @@ public class RecsPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backToMainMenuPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMainMenuPageActionPerformed
-        // TODO add your handling code here:
         MainPage main = new MainPage();
         main.setVisible(true);
         dispose();
@@ -239,7 +238,7 @@ public class RecsPage extends javax.swing.JFrame {
         Random rand = new Random();
         recsTextArea.setText("");
                       
-        //generate 5 unique, but random numbers
+        //generate 5 random, but unique numbers
         int index[] = new int[5]; 
             int n = 0;
             boolean found;
@@ -250,8 +249,10 @@ public class RecsPage extends javax.swing.JFrame {
 
                 //linear search to check if random index is not unique
                 for(int value:index){
-                    if (value==current)
+                    if (value==current){
                         found = true;
+                        break;
+                    }
                 }
                 //add random value to the array
                 if (!found){
@@ -268,8 +269,14 @@ public class RecsPage extends javax.swing.JFrame {
             Elements temp = doc.select(".bookTitle");
             
             //display book titles
-            for(int val:index){                            
-                recsTextArea.append("\n"+(temp.get(val).getElementsByTag("a").first().text())+"\n");            
+            for(int val:index){
+                String title;
+                //get title
+                title = temp.get(val).getElementsByTag("a").first().text();
+                //remove text that follows the book title
+                int splitIndex = title.indexOf("(");
+                title = title.substring(0,splitIndex);
+                recsTextArea.append("\n"+title+"\n");            
             }
             
             
