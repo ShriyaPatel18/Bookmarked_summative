@@ -25,6 +25,7 @@ public class CalendarPage extends javax.swing.JFrame {
     String temporaryString = "";
     String longString = "";
     String wishBook = "";
+    int current;
 
     /**
      * Creates new form CalendarPage
@@ -69,7 +70,7 @@ public class CalendarPage extends javax.swing.JFrame {
                 int dayEvent = Integer.valueOf(button.getText());
                 button.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        
+                        current = dayEvent;
                         getEvent(dayEvent);
                     }
                 });
@@ -126,7 +127,7 @@ public class CalendarPage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        wishSave = new javax.swing.JButton();
+        calendarSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -231,12 +232,12 @@ public class CalendarPage extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        wishSave.setBackground(new java.awt.Color(207, 226, 243));
-        wishSave.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        wishSave.setText("Save");
-        wishSave.addActionListener(new java.awt.event.ActionListener() {
+        calendarSave.setBackground(new java.awt.Color(207, 226, 243));
+        calendarSave.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        calendarSave.setText("Save");
+        calendarSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                wishSaveActionPerformed(evt);
+                calendarSaveActionPerformed(evt);
             }
         });
 
@@ -244,10 +245,6 @@ public class CalendarPage extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(wishSave)
-                .addGap(58, 58, 58))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -260,8 +257,13 @@ public class CalendarPage extends javax.swing.JFrame {
                         .addComponent(home)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(calendarSave)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -274,8 +276,8 @@ public class CalendarPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(wishSave, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(calendarSave, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -315,6 +317,28 @@ public class CalendarPage extends javax.swing.JFrame {
     
     }//GEN-LAST:event_wishSaveActionPerformed
 
+    private void calendarSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarSaveActionPerformed
+        // TODO add your handling code here:
+        eventsList.set(current,jTextArea1.getText());
+        try
+        {
+            FileWriter writeFile = new FileWriter(dir + "\\src\\my\\summative_project\\Calendar.txt");
+            BufferedWriter buffWrite = new BufferedWriter(writeFile);
+            for(int i = 0; i < eventsList.size(); i++)
+            {
+                buffWrite.write(eventsList.get(i));
+                buffWrite.newLine();
+            }
+          buffWrite.close();
+        }
+        catch (FileNotFoundException e){
+            System.out.println("File not found");
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(FavouritesPage.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }//GEN-LAST:event_calendarSaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -353,6 +377,7 @@ public class CalendarPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel calendarGrid;
     private javax.swing.JPanel calendarPanel;
+    private javax.swing.JButton calendarSave;
     private javax.swing.JButton home;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -367,6 +392,5 @@ public class CalendarPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JButton wishSave;
     // End of variables declaration//GEN-END:variables
 }
