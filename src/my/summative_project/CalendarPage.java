@@ -48,30 +48,47 @@ public class CalendarPage extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
+        
+        for(int m=0; m<31; m++){
+            System.out.println(eventsList.get(m));
+        }
+        
+        
+        
         int number = 1;        
         int day = setDate(2023,6);
         JButton[] array = new JButton[30];
         JButton button;
         for (int x=1; x<=42; x++){
-           if (x<day || number>numOfDays){
-             calendarGrid.add(new JLabel(" "));
-           }
+            if (x<day || number>numOfDays){
+              calendarGrid.add(new JLabel(" "));
+            }
            
-           else{ 
-            button = new JButton(Integer.toString(number));
-            button.addActionListener(e -> jTextArea1.setText((eventsList.get(day))));
-            calendarGrid.add(button);
-            array[number-1]=button;
-            number++;
-           }
+            else{ 
+                button = new JButton(Integer.toString(number));
+                int dayEvent = Integer.valueOf(button.getText());
+                button.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        
+                        getEvent(dayEvent);
+                    }
+                });
+                calendarGrid.add(button);
+                array[number-1]=button;
+                number++;
+            
+            }
       /*
         for(JButton potato : array){
             System.out.println(potato.getText());
         }
         */
-    }
+        }
     }
     
+    public void getEvent(int dayNum){
+        jTextArea1.setText((eventsList.get(dayNum)));
+    }
     
     public int setDate(int year, int month){
        
