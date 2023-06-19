@@ -47,6 +47,7 @@ public class CalendarPage extends javax.swing.JFrame {
         {
             e.printStackTrace();
         }
+        
         int number = 1;        
         int day = setDate(2023,6);
         JButton[] array = new JButton[30];
@@ -58,7 +59,7 @@ public class CalendarPage extends javax.swing.JFrame {
            
            else{ 
             button = new JButton(Integer.toString(number));
-            button.addActionListener(e -> System.out.println("f"));
+            button.addActionListener(e -> jTextArea1.setText((eventsList.get(day))));
             calendarGrid.add(button);
             array[number-1]=button;
             number++;
