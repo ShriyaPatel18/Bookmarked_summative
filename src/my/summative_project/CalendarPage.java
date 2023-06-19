@@ -33,6 +33,20 @@ public class CalendarPage extends javax.swing.JFrame {
     
     public CalendarPage() {
         initComponents();
+        try(Scanner readFile = new Scanner (calendarFile))
+        {
+            while (readFile.hasNext())
+            {
+                //update book into temporary String and update accumulated String before adding to list
+                temporaryString = readFile.nextLine();
+                longString = longString + temporaryString + "\n";
+                eventsList.add(temporaryString); 
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
         int number = 1;        
         int day = setDate(2023,6);
         JButton[] array = new JButton[30];
@@ -49,13 +63,13 @@ public class CalendarPage extends javax.swing.JFrame {
             array[number-1]=button;
             number++;
            }
-        }
+      /*
         for(JButton potato : array){
             System.out.println(potato.getText());
         }
-        
+        */
     }
-    
+    }
     
     
     public int setDate(int year, int month){
