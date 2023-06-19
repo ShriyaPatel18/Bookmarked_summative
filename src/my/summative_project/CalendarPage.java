@@ -11,20 +11,18 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.awt.Color;
 /**
  *
  * @author spate8
  */
 public class CalendarPage extends javax.swing.JFrame {
+    
     String dir = System.getProperty("user.dir");
     String eventsName = dir + "\\src\\my\\summative_project\\Calendar.txt";
     ArrayList<String> eventsList = new ArrayList<>();
     File calendarFile = new File(eventsName);
-    boolean wishFound = false;
     String temporaryString = "";
     String longString = "";
-    String wishBook = "";
     int current;
 
     /**
@@ -34,40 +32,34 @@ public class CalendarPage extends javax.swing.JFrame {
     
     public CalendarPage() {
         initComponents();
-        try(Scanner readFile = new Scanner (calendarFile))
-        {
-            while (readFile.hasNext())
-            {
+        try(Scanner readFile = new Scanner (calendarFile)){
+            while (readFile.hasNext()){
                 //update book into temporary String and update accumulated String before adding to list
                 temporaryString = readFile.nextLine();
                 longString = longString + temporaryString + "\n";
                 eventsList.add(temporaryString); 
             }
         }
-        catch (FileNotFoundException e)
-        {
+        catch (FileNotFoundException e){
             e.printStackTrace();
         }
-        
-        
-        for(int m=0; m<31; m++){
-            System.out.println(eventsList.get(m));
-        }
-        
-        
+         
         
         int number = 1;        
         int day = setDate(2023,6);
         JButton[] array = new JButton[30];
         JButton button;
+        //populate calendar grid with buttons and labels
         for (int x=1; x<=42; x++){
+            //labels to fill space
             if (x<day || number>numOfDays){
               calendarGrid.add(new JLabel(" "));
             }
-           
+            //buttons for each days of the month
             else{ 
                 button = new JButton(Integer.toString(number));
                 int dayEvent = Integer.valueOf(button.getText());
+                //when button is pressed
                 button.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         current = dayEvent;
@@ -76,14 +68,8 @@ public class CalendarPage extends javax.swing.JFrame {
                 });
                 calendarGrid.add(button);
                 array[number-1]=button;
-                number++;
-            
+                number++;    
             }
-      /*
-        for(JButton potato : array){
-            System.out.println(potato.getText());
-        }
-        */
         }
     }
     
@@ -91,15 +77,13 @@ public class CalendarPage extends javax.swing.JFrame {
         jTextArea1.setText((eventsList.get(dayNum)));
     }
     
-    public int setDate(int year, int month){
-       
+    public int setDate(int year, int month){      
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month - 1);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         numOfDays = calendar.getActualMaximum(Calendar.DATE);
-        //
-       return calendar.get(Calendar.DAY_OF_WEEK);
+        return calendar.get(Calendar.DAY_OF_WEEK);
     }
 
     /**
@@ -318,7 +302,7 @@ public class CalendarPage extends javax.swing.JFrame {
     }//GEN-LAST:event_wishSaveActionPerformed
 
     private void calendarSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarSaveActionPerformed
-        // TODO add your handling code here:
+        //update event info
         eventsList.set(current,jTextArea1.getText());
         try
         {
