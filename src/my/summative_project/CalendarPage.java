@@ -17,6 +17,14 @@ import java.awt.Color;
  * @author spate8
  */
 public class CalendarPage extends javax.swing.JFrame {
+    String dir = System.getProperty("user.dir");
+    String eventsName = dir + "\\src\\my\\summative_project\\Calendar.txt";
+    ArrayList<String> eventsList = new ArrayList<>();
+    File calendarFile = new File(eventsName);
+    boolean wishFound = false;
+    String temporaryString = "";
+    String longString = "";
+    String wishBook = "";
 
     /**
      * Creates new form CalendarPage
