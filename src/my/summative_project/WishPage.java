@@ -23,6 +23,7 @@ public class WishPage extends javax.swing.JFrame {
     String temporaryString = "";
     String longString = "";
     String wishBook = "";
+   
     
     /**
      * Creates new form WishPage
