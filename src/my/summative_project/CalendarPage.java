@@ -26,6 +26,7 @@ public class CalendarPage extends javax.swing.JFrame {
     int current;
     int month_number;
     int year;
+    String test;
 
     /**
      * Creates new form CalendarPage
@@ -117,9 +118,14 @@ public class CalendarPage extends javax.swing.JFrame {
         }
     }
     
+    
     public void getEvent(int dayNum){
-        jTextArea1.setText((eventsList.get(dayNum)));
+        //display events for clicked day
+        String text = eventsList.get(dayNum);
+        text=text.replaceAll(",", "\n");
+        jTextArea1.setText(text);
     }
+    
     
     public int setDate(){      
         Calendar calendar = Calendar.getInstance();
@@ -129,15 +135,14 @@ public class CalendarPage extends javax.swing.JFrame {
         month_number = calendar.get(Calendar.MONTH);
         year = calendar.get(Calendar.YEAR);
         
-        
+        //new month, reset planner
         if(Integer.valueOf(eventsList.get(0)) != month_number){
             eventsList.set(0,Integer.toString(month_number));
             System.out.println(month_number);
-            for(int i = 1; i < eventsList.size(); i++)
-        {
-            //update longString variable
-           eventsList.set(i,"Nothing Planned");
-        }
+            for(int i = 1; i < eventsList.size(); i++){
+            
+                eventsList.set(i,"Nothing Planned");
+            }
         }
         return calendar.get(Calendar.DAY_OF_WEEK);
     }
@@ -269,6 +274,7 @@ public class CalendarPage extends javax.swing.JFrame {
         jLabel10.setText("Day, Month, Year");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -286,25 +292,24 @@ public class CalendarPage extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(home)))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(calendarSave)))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(calendarSave)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(home)
+                        .addGap(34, 34, 34))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,16 +355,19 @@ public class CalendarPage extends javax.swing.JFrame {
         main.setVisible(true);
         dispose();
     }//GEN-LAST:event_homeActionPerformed
-
+    
+    /*
     private void wishSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wishSaveActionPerformed
 
-        //save results into file
-    
     }//GEN-LAST:event_wishSaveActionPerformed
-
+    */
+    
     private void calendarSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarSaveActionPerformed
-        //update event info
-        eventsList.set(current,jTextArea1.getText());
+        //update event info + covert multiline inputs into 1 line string
+        test = jTextArea1.getText();     
+        test=test.replaceAll("[\r\n]+", ", ");
+        eventsList.set(current,test);
+        
         try
         {
             FileWriter writeFile = new FileWriter(dir + "\\src\\my\\summative_project\\Calendar.txt");
