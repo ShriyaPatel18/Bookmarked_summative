@@ -256,7 +256,7 @@ public class WishPage extends javax.swing.JFrame {
 
         wishBook = wishTextField.getText();
 
-        //add book to the list
+        //remove book to the list
         booksList.remove(wishBook);
 
         //reset longString variable

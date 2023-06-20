@@ -24,6 +24,8 @@ public class CalendarPage extends javax.swing.JFrame {
     String temporaryString = "";
     String longString = "";
     int current;
+    int month_number;
+    int year;
 
     /**
      * Creates new form CalendarPage
@@ -46,9 +48,51 @@ public class CalendarPage extends javax.swing.JFrame {
          
         
         int number = 1;        
-        int day = setDate(2023,6);
+        int day = setDate();
         JButton[] array = new JButton[30];
         JButton button;
+        String month_name;
+        switch(month_number){
+            case 0: 
+               month_name = "January";
+               break;
+            case 1: 
+               month_name = "Febuary";
+               break;
+            case 2: 
+               month_name = "March";
+               break;
+            case 3: 
+               month_name = "April";
+               break;
+            case 4: 
+               month_name = "May";
+               break;
+            case 5: 
+               month_name = "June";
+               break;
+            case 6: 
+               month_name = "July";
+               break;
+            case 7: 
+               month_name = "August";
+               break;
+            case 8: 
+               month_name = "September";
+               break;
+            case 9: 
+               month_name = "October";
+               break;
+            case 10: 
+               month_name = "November";
+               break;
+            case 11: 
+               month_name = "December";
+               break;
+            default:
+                month_name = "month not found";
+        }
+      Title.setText(month_name+", " + year);
         //populate calendar grid with buttons and labels
         for (int x=1; x<=42; x++){
             //labels to fill space
@@ -77,12 +121,24 @@ public class CalendarPage extends javax.swing.JFrame {
         jTextArea1.setText((eventsList.get(dayNum)));
     }
     
-    public int setDate(int year, int month){      
+    public int setDate(){      
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month - 1);
+        
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         numOfDays = calendar.getActualMaximum(Calendar.DATE);
+        month_number = calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+        
+        
+        if(Integer.valueOf(eventsList.get(0)) != month_number){
+            eventsList.set(0,Integer.toString(month_number));
+            System.out.println(month_number);
+            for(int i = 1; i < eventsList.size(); i++)
+        {
+            //update longString variable
+           eventsList.set(i,"Nothing Planned");
+        }
+        }
         return calendar.get(Calendar.DAY_OF_WEEK);
     }
 
@@ -104,7 +160,7 @@ public class CalendarPage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        Title = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         home = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -143,8 +199,8 @@ public class CalendarPage extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel7.setText("Sat");
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel8.setText("June, 2023");
+        Title.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        Title.setText("June, 2023");
 
         javax.swing.GroupLayout calendarPanelLayout = new javax.swing.GroupLayout(calendarPanel);
         calendarPanel.setLayout(calendarPanelLayout);
@@ -172,14 +228,14 @@ public class CalendarPage extends javax.swing.JFrame {
                 .addGap(37, 37, 37))
             .addGroup(calendarPanelLayout.createSequentialGroup()
                 .addGap(164, 164, 164)
-                .addComponent(jLabel8)
+                .addComponent(Title)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         calendarPanelLayout.setVerticalGroup(
             calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(calendarPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jLabel8)
+                .addComponent(Title)
                 .addGap(2, 2, 2)
                 .addGroup(calendarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -359,6 +415,7 @@ public class CalendarPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Title;
     private javax.swing.JPanel calendarGrid;
     private javax.swing.JPanel calendarPanel;
     private javax.swing.JButton calendarSave;
@@ -371,7 +428,6 @@ public class CalendarPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
