@@ -123,7 +123,7 @@ public class CalendarPage extends javax.swing.JFrame {
         //display events for clicked day
         String text = eventsList.get(dayNum);
         text=text.replaceAll(",", "\n");
-        jTextArea1.setText(text);
+        events.setText(text);
     }
     
     
@@ -170,7 +170,7 @@ public class CalendarPage extends javax.swing.JFrame {
         home = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        events = new javax.swing.JTextArea();
         calendarSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -269,10 +269,10 @@ public class CalendarPage extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel9.setText("Events");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        events.setColumns(20);
+        events.setLineWrap(true);
+        events.setRows(5);
+        jScrollPane1.setViewportView(events);
 
         calendarSave.setBackground(new java.awt.Color(207, 226, 243));
         calendarSave.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
@@ -356,7 +356,7 @@ public class CalendarPage extends javax.swing.JFrame {
     
     private void calendarSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarSaveActionPerformed
         //update event info + covert multiline inputs into 1 line string
-        test = jTextArea1.getText();     
+        test = events.getText();     
         test=test.replaceAll("[\r\n]+", ", ");
         eventsList.set(current,test);
         
@@ -419,6 +419,7 @@ public class CalendarPage extends javax.swing.JFrame {
     private javax.swing.JPanel calendarGrid;
     private javax.swing.JPanel calendarPanel;
     private javax.swing.JButton calendarSave;
+    private javax.swing.JTextArea events;
     private javax.swing.JButton home;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -430,6 +431,5 @@ public class CalendarPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
